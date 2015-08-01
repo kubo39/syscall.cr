@@ -1,1 +1,1 @@
-require "./x64/**"
+require "./linux_x64/**"
