@@ -40,18 +40,8 @@ module Syscall
   def syscall(n, arg1, arg2, arg3, arg4 : UInt64) : UInt64
     dst :: UInt64
     asm("syscall" : "={rax}"(dst)
-        : "{rax}"(n), "{rdi}"(arg1), "{rsi}"(arg2), "{rdx}"(arg3)
-        "{r10}"(arg4)
-        : "rcx", "r11", "memory"
-        : "volatile")
-    return dst
-  end
-
-  def syscall(n, arg1, arg2, arg3, arg4 : UInt64) : UInt64
-    dst :: UInt64
-    asm("syscall" : "={rax}"(dst)
         : "{rax}"(n), "{rdi}"(arg1), "{rsi}"(arg2), "{rdx}"(arg3),
-        "{r10}"(arg4)
+          "{r10}"(arg4)
         : "rcx", "r11", "memory"
         : "volatile")
     return dst
@@ -60,8 +50,18 @@ module Syscall
   def syscall(n, arg1, arg2, arg3, arg4, arg5 : UInt64) : UInt64
     dst :: UInt64
     asm("syscall" : "={rax}"(dst)
-        : "{rax}"(n), "{rdi}"(arg1), "{rsi}"(arg2), "{rdx}"(arg3)
-        "{r10}"(arg4), "{r8}"(arg5)
+        : "{rax}"(n), "{rdi}"(arg1), "{rsi}"(arg2), "{rdx}"(arg3),
+          "{r10}"(arg4), "{r8}"(arg5)
+        : "rcx", "r11", "memory"
+        : "volatile")
+    return dst
+  end
+
+  def syscall(n, arg1, arg2, arg3, arg4, arg5, arg6 : UInt64) : UInt64
+    dst :: UInt64
+    asm("syscall" : "={rax}"(dst)
+        : "{rax}"(n), "{rdi}"(arg1), "{rsi}"(arg2), "{rdx}"(arg3),
+          "{r10}"(arg4), "{r8}"(arg5), "{r9}"(arg6)
         : "rcx", "r11", "memory"
         : "volatile")
     return dst
