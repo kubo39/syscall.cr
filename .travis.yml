@@ -1,4 +1,4 @@
-language: c
+language: crystal
 sudo: required
 matrix:
   include:
@@ -17,7 +17,14 @@ before_install: |
       ;;
   esac
 install: |
-  sudo apt-get install crystal
+  case $TRAVIS_OS_NAME in
+    linux)
+      sudo apt-get install crystal
+      ;;
+    osx)
+      brew install crystal
+      ;;
+  esac
 script:
   - crystal spec
 branches:
