@@ -1,8 +1,5 @@
 language: crystal
 sudo: false
-os:
-  - linux
-  - osx
 script:
   - crystal spec
 branches:
