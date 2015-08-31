@@ -1,3 +1,7 @@
+module Syscall
+  VERSION = "0.1.0"
+end
+
 ifdef linux && x86_64
   require "./linux_x64/**"
 elsif darwin && x86_64
