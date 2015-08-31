@@ -1,33 +1,8 @@
 language: crystal
-sudo: required
+sudo: false
 os:
   - linux
   - osx
-matrix:
-  include:
-    - env: ARCH=x86_64 ARCH_CMD=linux64
-      os: linux
-    - os: osx
-before_install: |
-  case $TRAVIS_OS_NAME in
-    linux)
-      curl http://dist.crystal-lang.org/apt/setup.sh | sudo bash
-      sudo apt-get -q update
-      ;;
-    osx)
-      brew update
-      brew tap manastech/crystal
-      ;;
-  esac
-install: |
-  case $TRAVIS_OS_NAME in
-    linux)
-      sudo apt-get install crystal
-      ;;
-    osx)
-      brew install crystal
-      ;;
-  esac
 script:
   - crystal spec
 branches:
