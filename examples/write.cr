@@ -2,5 +2,5 @@ require "../src/syscall"
 
 include Syscall
 
-b = "Hello!\n".bytes
-syscall(WRITE, 1_u64, b.buffer.address, b.size.to_u64)
+str = "Hello!\n"
+syscall(WRITE, 1_u64, str.to_unsafe, str.bytesize.to_u64)
