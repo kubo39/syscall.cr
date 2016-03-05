@@ -21,7 +21,6 @@ module Syscall
 
   def syscall(n, arg1, arg2 : UInt64) : UInt64
     dst = 0_u64
-    dst :: UInt64
     asm("syscall" : "={rax}"(dst)
         : "{rax}"(n), "{rdi}"(arg1), "{rsi}"(arg2)
         : "rcx", "r11", "memory"
@@ -50,7 +49,6 @@ module Syscall
 
   def syscall(n, arg1, arg2, arg3, arg4, arg5 : UInt64) : UInt64
     dst = 0_u64
-    dst :: UInt64
     asm("syscall" : "={rax}"(dst)
         : "{rax}"(n), "{rdi}"(arg1), "{rsi}"(arg2), "{rdx}"(arg3),
           "{r10}"(arg4), "{r8}"(arg5)
