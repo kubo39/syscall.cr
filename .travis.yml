@@ -1,7 +1,20 @@
+os:
+  - linux
+  - osx
+
 language: crystal
-sudo: false
+
+crystal:
+  - latest
+  - nightly
+
 script:
   - crystal spec
+
 branches:
   only:
     - master
+
+matrix:
+  allow_failures:
+    - crystal: nightly
