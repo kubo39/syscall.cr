@@ -1,0 +1,9 @@
+name: syscall.cr
+version: 0.1.0
+
+authors:
+  - Hiroki Noda <kubo39@gmail.com>
+
+license: MIT
+
+crystal: 0.31.1
